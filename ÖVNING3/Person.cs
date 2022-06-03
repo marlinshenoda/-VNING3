@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ÖVNING3
+﻿namespace ÖVNING3
 {
     public class Person
     {
         public Person(int age, string fname, string lname, double height, double weight)
         {
-            this.age = age;
+            Age = age;
             this.fname = fname;
             this.lname = lname;
             this.height = height;
@@ -23,7 +17,7 @@ namespace ÖVNING3
         private double height;
         private double weight;
 
-     
+
 
         //publika properties
         public int Age
@@ -39,7 +33,7 @@ namespace ÖVNING3
                 {
                     throw new ArgumentException("Age must be greater than 0");
                 }
-             ;
+
             }
         }
         public string Fname
@@ -60,7 +54,7 @@ namespace ÖVNING3
 
                     }
                 }
-                ;
+
             }
         }
         public string Lname
@@ -97,10 +91,10 @@ namespace ÖVNING3
         }
 
 
-       
+
 
     }
 
-  
+
 }
 

@@ -1,43 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ÖVNING3
+﻿namespace ÖVNING3
 {
     internal abstract class Animal
     {
         public string Namn { get; set; }
         public double Vikt { get; set; }
-        public int Ålder { get; set; }
-        public abstract string DoSound();
-        public Animal()
+        public int Age { get; set; }
+        public Animal(string namn, double vikt, int age)
         {
-
+            Namn = namn;
+            Vikt = vikt;
+            Age = age;
         }
+        public abstract string DoSound();
         public virtual string Stats()
         {
-            return $"{Namn} animal is {Ålder} and grow {Vikt}";
+            return $"{Namn} animal is {Age} and grow {Vikt}";
         }
 
 
     }
-    internal class Horse: Animal
+    internal class Horse : Animal, IPerson
     {
-        public string eat { get; set;}
+        public Horse(string namn, double vikt, int age, string eat) : base(namn, vikt, age)
+        {
+            Eat = eat;
+        }
+
+        public string Eat { get; set; }
         public override string DoSound()
         {
             return $"Neigh";
         }
         public override string Stats()
         {
-            return $"{Namn} animal is {Ålder} and grow {Vikt}";
+            return base.Stats() + $"Food it eats: {Eat}";
+        }
+
+        public void Talk()
+        {
+            Console.WriteLine("I'm a Centaur!"); ;
         }
     }
-    internal class Dog: Animal
+    internal class Dog : Animal
     {
-         
+        public Dog(string namn, double vikt, int age) : base(namn, vikt, age)
+        {
+        }
+
         public override string DoSound()
         {
             return $"bark";
@@ -45,12 +54,16 @@ namespace ÖVNING3
         }
         public override string Stats()
         {
-            return $"Dog animal is {Ålder} and grow {Vikt}";
+            return $"Dog animal is {Age} and grow {Vikt}";
         }
-    } 
-    internal class Hedgehog: Animal
+    }
+    internal class Hedgehog : Animal
     {
-        public int NrOfSpikes { get; set; } 
+        public Hedgehog(string namn, double vikt, int age) : base(namn, vikt, age)
+        {
+        }
+
+        public int NrOfSpikes { get; set; }
         public override string DoSound()
         {
             return $"hedgehogsound";
@@ -58,70 +71,69 @@ namespace ÖVNING3
         }
         public override string Stats()
         {
-            return $"{Namn} animal is {Ålder} and grow {Vikt} and number of spikes are {NrOfSpikes}";
+            return $"{Namn} animal is {Age} and grow {Vikt} and number of spikes are {NrOfSpikes}";
         }
-    } 
-    internal class Worm: Animal
+    }
+    internal class Worm : Animal
     {
+        public Worm(string namn, double vikt, int age) : base(namn, vikt, age)
+        {
+        }
+
         public override string DoSound()
         {
             return $"wornsound";
 
         }
-        public override string Stats()
-        {
-            return $"{Namn} animal is {Ålder} and grow {Vikt} his sound is {DoSound()}";
-        }
+
     }
-     class Bird: Animal
+    class Bird : Animal
     {
-        public double WingSpan { get; set; }    
+        public Bird(string namn, double vikt, int age) : base(namn, vikt, age)
+        {
+        }
+
+        public double WingSpan { get; set; }
         public override string DoSound()
         {
             return $"tweet";
 
         }
-        public override string Stats()
-        {
-            return $"Bird animal is {Ålder} and grow {Vikt} his sound is {DoSound()}and wing span is{WingSpan}";
-        }
+
 
     }
-    internal class Wolf: Animal
+    internal class Wolf : Animal
     {
-       public bool IsPoisonous { get; set; }    
+        public Wolf(string namn, double vikt, int age) : base(namn, vikt, age)
+        {
+        }
+
+        public bool IsPoisonous { get; set; }
         public override string DoSound()
         {
             return $"wolfsound";
 
         }
-        public override string Stats()
-        {
-            return $"Wolf animal is {Ålder} and grow {Vikt} his sound is {DoSound()} and is poisonous{IsPoisonous}";
-        }
-    } 
-    internal class Pelican: Bird
-    {
-        public override string Stats()
-        {
-            return $"{Namn} animal is {Ålder} and grow {Vikt}";
-        }
-    } 
-    internal class Flamingo: Bird
-    {
-        public override string Stats()
-        {
-            return $"Flamingo animal is {Ålder} and grow {Vikt} ";
-        }
-    }  
 
-    internal class Swan: Bird
+    }
+    internal class Pelican : Bird
     {
-        
-        public override string Stats()
+        public Pelican(string namn, double vikt, int age) : base(namn, vikt, age)
         {
-            return $"Swan animal is {Ålder} and grow {Vikt} ";
+        }
+    }
+    internal class Flamingo : Bird
+    {
+        public Flamingo(string namn, double vikt, int age) : base(namn, vikt, age)
+        {
         }
     }
 
- }
+    internal class Swan : Bird
+    {
+        public Swan(string namn, double vikt, int age) : base(namn, vikt, age)
+        {
+        }
+    }
+
+}
